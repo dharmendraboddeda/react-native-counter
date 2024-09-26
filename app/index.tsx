@@ -44,9 +44,9 @@ export default function Index() {
           style={{
             flexDirection: "row",
 
-            gap: 10,
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space-between",
+            width: 270,
             padding: 10,
           }}
         >
@@ -58,13 +58,12 @@ export default function Index() {
               borderRadius: 5,
               justifyContent: "center",
               alignItems: "center",
-              minWidth: 50,
               paddingHorizontal: 10,
             }}
           >
             <TextInput
-              style={{ fontWeight: "bold", fontSize: 20 }}
-              value={bufferNumber.toLocaleString()}
+              style={{ fontWeight: "bold", fontSize: 20, width: 100 }}
+              value={bufferNumber.toString()}
               onChangeText={(text) =>
                 setBufferNumber(isNaN(Number(text)) ? 0 : Number(text))
               }
@@ -84,9 +83,9 @@ export default function Index() {
             style={{
               flexDirection: "row",
               padding: 10,
-              gap: 10,
-              justifyContent: "center",
+              justifyContent: "space-between",
               alignItems: "center",
+              width: 230,
             }}
           >
             <View>
