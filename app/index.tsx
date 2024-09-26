@@ -9,6 +9,7 @@ export default function Index() {
       style={{
         display: "flex",
         alignItems: "center",
+        height: "100%",
       }}
     >
       <View
@@ -36,6 +37,7 @@ export default function Index() {
       <View
         style={{
           justifyContent: "center",
+
           alignItems: "center",
           height: "100%",
         }}
@@ -58,11 +60,18 @@ export default function Index() {
               borderRadius: 5,
               justifyContent: "center",
               alignItems: "center",
-              paddingHorizontal: 10,
+
+              width: 100,
             }}
           >
             <TextInput
-              style={{ fontWeight: "bold", fontSize: 20, width: 100 }}
+              style={{
+                fontWeight: "bold",
+                fontSize: 20,
+                width: 100,
+                paddingHorizontal: 10,
+                paddingVertical: 5,
+              }}
               value={bufferNumber.toString()}
               onChangeText={(text) =>
                 setBufferNumber(isNaN(Number(text)) ? 0 : Number(text))
