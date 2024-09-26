@@ -1,15 +1,113 @@
-import { Text, View } from "react-native";
+import React from "react";
+import { Button, Text, TextInput, View } from "react-native";
 
 export default function Index() {
+  const [count, setCounter] = React.useState<number>(0);
+  const [bufferNumber, setBufferNumber] = React.useState<number>(0);
   return (
     <View
       style={{
-        flex: 1,
-        justifyContent: "center",
+        display: "flex",
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <View
+        style={{
+          backgroundColor: "black",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "absolute",
+          zIndex: 10,
+          height: 60,
+        }}
+      >
+        <Text
+          style={{
+            color: "white",
+            fontWeight: "bold",
+            fontFamily: "roboto",
+            fontSize: 32,
+          }}
+        >
+          COUNTER
+        </Text>
+      </View>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+
+            gap: 10,
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 10,
+          }}
+        >
+          <Text>Add Buffer number:</Text>
+          <View
+            style={{
+              borderColor: "black",
+              borderWidth: 1,
+              borderRadius: 5,
+              justifyContent: "center",
+              alignItems: "center",
+              minWidth: 50,
+              paddingHorizontal: 10,
+            }}
+          >
+            <TextInput
+              style={{ fontWeight: "bold", fontSize: 20 }}
+              value={bufferNumber.toLocaleString()}
+              onChangeText={(text) =>
+                setBufferNumber(isNaN(Number(text)) ? 0 : Number(text))
+              }
+              keyboardType="numeric"
+            />
+          </View>
+        </View>
+
+        <View
+          style={{
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ fontSize: 50 }}>{count}</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              padding: 10,
+              gap: 10,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <View>
+              <Button
+                onPress={() => {
+                  setCounter(
+                    count >= bufferNumber ? count - bufferNumber : count
+                  );
+                }}
+                title="Decrement"
+              />
+            </View>
+            <View>
+              <Button
+                onPress={() => setCounter(count + bufferNumber)}
+                title="Increment"
+              />
+            </View>
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
